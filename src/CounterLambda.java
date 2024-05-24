@@ -1,12 +1,10 @@
-
-
 import java.util.function.Function;
 
-public class Counter {
+public class CounterLambda {
 
-    private final Generator generator;
+    private final Function<Integer, Ticket> generator;
 
-    public Counter(Generator generator) {
+    public CounterLambda(Function<Integer, Ticket> generator) {
         this.generator = generator;
     }
 
