@@ -15,6 +15,6 @@ public class CounterStreamImpl implements  Counter{
     @Override
     public int counter() {
         Stream<Ticket> stream = ticketStream.get();
-        return (int) stream.filter(Ticket::isLucky).count();
+        return (int) stream.parallel().filter(Ticket::isLucky).count();
     }
 }

@@ -1,14 +1,24 @@
-package org.hse.course.datasource;
+package org.hse.course.application.datasource;
 
+import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 import org.hse.course.domain.business.TicketIterator;
 import org.hse.course.domain.model.Ticket;
 
 import java.util.NoSuchElementException;
 
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class TicketIteratorImpl implements TicketIterator {
-    private final int maxNumber;
-    private final int digits;
-    private int current = 0;
+    final int maxNumber;
+
+    @Getter(AccessLevel.PROTECTED)
+    final int digits;
+
+    @Getter(AccessLevel.PROTECTED)
+    int current = 0;
 
     public TicketIteratorImpl(int digits) {
         this.maxNumber = (int) Math.pow(10, digits);
@@ -22,7 +32,7 @@ public class TicketIteratorImpl implements TicketIterator {
 
     @Override
     public Ticket next() {
-        if (!this.hasNext()){
+        if (!this.hasNext()) {
             throw new NoSuchElementException();
         }
         Ticket ticket = getTiket();
@@ -32,13 +42,5 @@ public class TicketIteratorImpl implements TicketIterator {
 
     public Ticket getTiket() {
         return new TicketImpl(current, digits);
-    }
-
-    public int getDigits() {
-        return digits;
-    }
-
-    public int getCurrent() {
-        return current;
     }
 }
