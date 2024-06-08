@@ -33,7 +33,7 @@ public class TicketMultipleOfFiveDecoratorTest {
     public void testOddLuckyTicket() {
 
         Mockito.when(ticket.getNumber()).thenReturn(101101);
-        TicketEvenDecorator decorator = new TicketEvenDecorator(ticket);
+        TicketMultipleOfFiveDecorator decorator = new TicketMultipleOfFiveDecorator(ticket);
 
         boolean actual = decorator.isLucky();
 
@@ -46,7 +46,7 @@ public class TicketMultipleOfFiveDecoratorTest {
     public void testEvenNotLuckyTicket() {
         Mockito.when(ticket.getNumber()).thenReturn(101100);
         Mockito.when(ticket.isLucky()).thenReturn(false);
-        TicketEvenDecorator decorator = new TicketEvenDecorator(ticket);
+        TicketMultipleOfFiveDecorator decorator = new TicketMultipleOfFiveDecorator(ticket);
 
         boolean actual = decorator.isLucky();
 

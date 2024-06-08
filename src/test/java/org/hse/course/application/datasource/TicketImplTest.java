@@ -63,17 +63,23 @@ public class TicketImplTest {
     }
     @Test
     public void testIsLucky(){
-        int firstTicket = 100500;
-        int secondTicket = 101101;
+        int number = 100500;
         int digits = 6;
 
-        Ticket firstTicketObject = new TicketImpl(firstTicket, digits);
-        Ticket secondTicketObject = new TicketImpl(secondTicket, digits);
+        Ticket numberObject = new TicketImpl(number, digits);
 
-        assertNotNull("Объект должен быть создан", firstTicketObject);
-        assertFalse("Этот билет счастливый", firstTicketObject.isLucky());
-        assertNotNull("Объект должен быть создан", secondTicketObject);
-        assertTrue("Этот билет не счастливый", secondTicketObject.isLucky());
+        assertNotNull("Объект должен быть создан", numberObject);
+        assertFalse("Этот билет должен быть счастливым", numberObject.isLucky());
+    }
+    @Test
+    public void testIsNotLucky(){
+        int number = 101101;
+        int digits = 6;
+
+        Ticket numberObject = new TicketImpl(number, digits);
+
+        assertNotNull("Объект должен быть создан", numberObject);
+        assertTrue("Этот билет должен быть не счастливым", numberObject.isLucky());
 
     }
 }
